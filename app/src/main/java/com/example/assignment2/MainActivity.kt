@@ -65,5 +65,17 @@ fun MainScreen(activity: ComponentActivity) {
         ) {
             Text("Start Activity Implicitly")
         }
+
+        Button(
+            onClick = {
+                val intent = Intent(activity, ImageActivity::class.java)
+                activity.startActivity(intent)
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(5.dp)
+        ) {
+            Text("View Image Activity")
+        }
     }
 }
