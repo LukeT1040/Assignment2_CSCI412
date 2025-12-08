@@ -11,11 +11,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.assignment2.ui.theme.Assignment2Theme
+import android.widget.Toast
+import android.content.pm.PackageManager
+
+
 
 class SecondActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
+        val permission = "com.example.assignment2.MY_DANGEROUS_PERMISSION"
+        if (checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(this, "Permission denied — cannot open Second Activity", Toast.LENGTH_SHORT).show()
+            finish()
+            return
+        }
 
         setContent {
             Assignment2Theme {
